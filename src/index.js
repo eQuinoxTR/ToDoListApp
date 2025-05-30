@@ -1,9 +1,7 @@
 import "./styles.css";
+import {root, pages, getCardDom} from "./dom.js";
 
 (function() {
-    const root = document.querySelector("html")
-    let pages = document.querySelectorAll(".container-of-notes");
-    // area for improvement, random dom
     let theNoteIsSaved = false;
     let savedNote;
 
@@ -38,21 +36,14 @@ import "./styles.css";
     }
 
     function createNewNote(page) {
-        // area for improvement, why put DOM inside here? 
-        const note = document.createElement("div");
-        note.classList.add("note");
-        const input = document.createElement("input");
-        input.placeholder = "Type a new task...";
-        note.appendChild(input);
-        const btn = page.querySelector(".new");
-        // area for improvement, why put DOM inside here? 
-        const coloredNote = determineNoteColor(note, page.id);
-        page.insertBefore(coloredNote, btn); // insert new note before the "Create new note" button
-        addTxtIfFocusOutOrEnter(input);
+        let dom = getCardDom(page)
+        const coloredNote = determineNoteColor(dom.note, page.id);
+        page.insertBefore(coloredNote, dom.btn); // insert new note before the "Create new note" button
+        addTxtIfFocusOutOrEnter(dom.input);
     }
 
     function saveNote(note) {
-        let copy = note.cloneNode(true)
+        let copy = note.cloneNode(true);
         note.remove();
         return copy;
     }
@@ -88,7 +79,7 @@ import "./styles.css";
         input.parentNode.textContent = `${input.value}`;
     }
 })()
-
+                    
 
 // class GetTags {
 //     constructor(subject, deadline) {
