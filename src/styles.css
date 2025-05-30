@@ -1,0 +1,234 @@
+html, body {
+    background-color: rgb(25, 25, 25);
+    color: #c6d0f5;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    caret-color: #c6d0f5;
+    font-family: Century Gothic Bold, Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: .8px;
+    font-weight: bolder;
+    /* padding: 50px 200px; */
+}
+
+:root {
+    --hover: none;
+}
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('gothicCentury/centurygothic.woff2') format('woff2'),
+         url('gothicCentury/centurygothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Century Gothic Bold';
+    src: url('gothicCentury/centurygothicbold.woff2') format('woff2'),
+         url('gothicCentury/centurygothicbold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+hr {
+    border: 1px solid rgb(38, 38, 38);
+    flex-grow: 0;
+}
+
+container {
+    width: 100%;
+    height: 300px;
+    display: grid;
+    grid-template: 40px .8fr / 1fr 1fr 1.3px 1fr 1fr 1fr;
+    gap: 20px;
+    user-select: none;
+}
+
+.status {
+    align-self: flex-end;
+    padding: 3px 3px;
+    border-radius: 4px;
+    font-size: .85rem;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+}
+
+container > div:nth-child(3) {
+    grid-column-start: 4;
+}
+/* upper part of the to do list */
+.one {
+    background-color: hsl(359deg, 68%, 71%);
+    width: 49px;
+}
+
+.two {
+    background-color: hsl(20deg, 79%, 70%);
+    width: 92px;
+}
+
+.three {
+    background-color: rgb(140, 170, 238);
+    width: 78px;
+}
+
+.done {
+    background-color: hsl(115, 33%, 58%);
+    width: 38px;
+}
+
+.doin {
+    background-color: hsl(232, 37%, 68%);
+    width: 42px;
+}
+
+/* notes below */
+
+.container-of-notes div, #new {
+    transition: 100ms ease-out;
+}
+
+.note, .new {
+    position: relative;
+}
+
+.note:hover::before, .new:hover::before{
+    content: "";
+    background-color: var(--hover);
+    border-radius: 15px;
+    position: absolute;
+    top: -7px;
+    left: 0px;
+    width: 100%;
+    height: 2px;
+    z-index: 1;
+}
+
+.note:hover  {
+    background-color: rgb(47, 47, 47);
+}
+
+
+#red {
+    background-color: rgb(54, 33, 33);
+    border-color: hsl(357, 29%, 32%);
+}
+
+#red:hover {
+    background-color: rgb(105, 58, 60);
+}
+
+#green {
+    background-color: rgb(45, 66, 43);
+    border-color: rgb(93, 124, 90);
+}
+
+#green:hover {
+    background-color: rgb(93, 124, 90);
+}
+
+#yellow {
+    background-color: rgba(71, 49, 32, 0.897);
+    border-color: hsl(32, 29%, 32%);
+}
+
+#yellow:hover {
+    background-color: hsl(32, 29%, 32%);
+}
+
+#blue {
+    background-color: rgb(38, 51, 65);
+    border-color: rgb(92, 111, 156);
+}
+
+#blue:hover {
+    background-color: rgb(92, 111, 156);
+}
+
+.line {
+    grid-column-start: 3;
+    background-color: rgb(38, 38, 38);
+    border: none;
+}
+
+.container-of-notes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.new {
+    background-color: transparent !important;
+    border: .12rem solid rgba(54, 54, 54, 0.479) !important;
+    padding-left: 18px !important;
+    height: 25px !important;
+    color:hsl(228, 3%, 34%);
+}
+
+.new:hover  {
+    background-color: rgb(47, 47, 47) !important;
+}
+
+.container-of-notes div {
+    border-radius: 12px;
+    background-color:rgb(38, 38, 38);
+    min-height: 27px;
+    align-content: center;
+    padding: 8px 10px;
+    border: 1px rgb(54, 54, 54) solid;
+    font-size: 1.05rem;
+    word-break: break-word;
+    letter-spacing: normal;
+}
+
+.container-of-notes div input {
+    color: #c6d0f5;
+    background-color: transparent;
+    outline: none;
+    border-style: none;
+    padding-bottom: 4px;
+    width: 93%;
+}
+
+.container-of-notes div div {
+    background-color: rgb(255, 255, 255);
+    display: inline-flex;
+    gap: 5px;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    border: transparent;
+    z-index: 1;
+    height: 10px !important;
+    margin-bottom: -10px;
+}
+
+#deadline {
+    position: relative;
+    bottom: 2px;
+}
+
+#deadline, .deadlineTxt {
+    letter-spacing: normal;
+    font-size: 13px !important; 
+    display: inline !important;
+    background-color: transparent !important;
+}
+
+.deadlineTxt {
+    color: aquamarine;
+}
+
+.container-of-notes div input:focus {
+    outline: none;
+    transition: 200ms ease-out;
+    box-shadow: 0 3px 0 0 rgb(100, 103, 131);
+}
+
+.to-do {
+    height: 1000px;
+    width: clamp(800px, 60vw, 1300px);
+    padding: 50px 200px;
+}
+
+
+
