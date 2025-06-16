@@ -26,6 +26,8 @@ export function getCardDom(page) {
     return {note, input, btn}
 } 
 
+
+
 export function addPopOver(page) {
     console.log("adding")
 } 
