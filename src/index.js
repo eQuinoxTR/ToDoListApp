@@ -1,8 +1,8 @@
 import "./styles.css";
-import {pages} from "./dom.js";
+import {flex} from "./dom.js";
 import {manageNoteClick, manageIconClick, detectTheNote, detectTheIcon} from "./functions.js";
 (function() {
-    pages.forEach((page) => page.addEventListener("click", (e) => {
+    flex.addEventListener("click", (e) => {
         let clickedNote = detectTheNote(e.target, e.target.parentNode, e.target.classList); 
         let clickedIcon = detectTheIcon(e.target.id, e.target);
         if (clickedNote != undefined) {
@@ -10,5 +10,5 @@ import {manageNoteClick, manageIconClick, detectTheNote, detectTheIcon} from "./
         } else if (clickedIcon != undefined) {
             manageIconClick(clickedIcon)
         }
-    }))
+    })
 })()

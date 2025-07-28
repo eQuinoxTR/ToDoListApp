@@ -1,6 +1,5 @@
-import {root, getCardDom, addPopOver} from "./dom.js";
-let theNoteIsSaved = false;
-let savedNote;
+import {root, getCardDom, addPopOver, deletePopover} from "./dom.js";
+let theNoteIsSaved = false, savedNote, popoverActive;
 
 export function detectTheNote(clickedItem, parent, classOfClickedItem) {
     if (classOfClickedItem == "note" || classOfClickedItem == "new") {
@@ -15,7 +14,7 @@ export function detectTheNote(clickedItem, parent, classOfClickedItem) {
 }
 
 export function detectTheIcon(id, icon) {
-    if (id == "doneIcon" || id == "options") {
+    if (id == "doneIcon" || id == "options" || id == "close") {
         return icon;
     }
 }
@@ -37,8 +36,12 @@ export function manageIconClick(icon) {
     if (icon.id == "doneIcon") {
         deleteNote(icon.parentNode);
     } else if (icon.id == "options") {
-        addPopOver();
-    } 
+        addPopOver(icon.parentNode, popoverActive);
+        popoverActive = true;
+    } else if (icon.id == "close") {
+        deleteNote(icon.parentNode);
+        popoverActive = false;
+    }
 }
 
 function createNewNote(page) {
@@ -82,7 +85,7 @@ function addTxtIfFocusOutOrEnter(input) {
 }
 
 function addTxt(input) {
-    input.parentNode.textContent = `${input.value}`;
+    if (input.value != "") {input.parentNode.textContent = `${input.value}`;}
 }
 
 function deleteNote(note) {

@@ -6,114 +6,137 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>To do list app</h1>
-    <hr>
-    <div class="to-do">
-        <container>
-            <div class="status done">Done</div>
-            <div class="status doin">Doing</div>
-            <div class="status one">Urgent</div>
-            <div class="status two">Midly urgent</div>
-            <div class="status three">Not urgent</div>
-            <div class="container-of-notes" id="container-green">
-                <div class="note" id="green">
-                    <div class="header-txt">Quick Stretch Break</div>
-                        <div class="txt-container">
-                            <div id="deadline">
-                                Due <div class="deadlineTxt">in a few months</div>
+    <!-- <hr> -->
+    <div class="flex">
+        <div class="to-do">
+            <container>
+                <div class="status done">Done</div>
+                <div class="status doin">Doing</div>
+                <div class="status one">Urgent</div>
+                <div class="status two">Midly urgent</div>
+                <div class="status three">Not urgent</div>
+                <div class="container-of-notes" id="container-green">
+                    <div class="note" id="green">
+                        <div class="header-txt">Quick Stretch Break</div>
+                            <div class="txt-container">
+                                <div id="deadline">
+                                    Due <div class="deadlineTxt">in a few months</div>
+                                </div>
                             </div>
-                        </div>
-                    <div id="doneIcon"></div><div id="options"></div>
-                </div>
+                        <div id="doneIcon"></div><div id="options"></div>
+                    </div>
 
-                <div class="note" id="green">
-                    <div class="header-txt">Quick Stretch Break</div>
-                        <div class="txt-container">
-                            <div id="deadline">
-                                Due <div class="deadlineTxt">in a few months</div>
+                    <div class="note" id="green">
+                        <div class="header-txt">Quick Stretch Break</div>
+                            <div class="txt-container">
+                                <div id="deadline">
+                                    Due <div class="deadlineTxt">in a few months</div>
+                                </div>
                             </div>
-                        </div>
-                    <div id="doneIcon"></div><div id="options"></div>
-                </div>                
-                <div class="new">+ New note</div>
+                        <div id="doneIcon"></div><div id="options"></div>
+                    </div>                
+                    <div class="new">+ New note</div>
+                </div>
+                <div class="container-of-notes">
+                    <div class="new">+ New note</div>
+                </div>
+                <div class="line"></div>
+                <div class="container-of-notes" id="container-red">
+                    <div class="note" id="red">
+                        <div class="header-txt">check emails</div>
+                            <div class="txt-container">
+                                <div id="deadline">
+                                    Due <div class="deadlineTxt">in a few months</div>
+                                </div>
+                            </div>
+                        <div id="doneIcon"></div><div id="options"></div>
+                    </div>
+                    <div class="note" id="red">
+                        <div class="header-txt">Go to the bank</div>
+                            <div class="txt-container">
+                                <div id="deadline">
+                                    Due <div class="deadlineTxt">in a few months</div>
+                                </div>
+                            </div>
+                        <div id="doneIcon"></div><div id="options"></div>
+                    </div>
+                    <div class="new">+ New note</div>
+                </div>
+                <div class="container-of-notes" id="container-yellow">
+                    <div class="note" id="yellow">
+                        <div class="header-txt">Stroll by the lake</div>
+                            <div class="txt-container">
+                                <div id="deadline">
+                                    Due <div class="deadlineTxt">in a few months</div>
+                                </div>
+                            </div>
+                        <div id="doneIcon"></div><div id="options"></div>
+                    </div>
+                    <div class="note" id="yellow">
+                        <div class="header-txt">Call a friend</div>
+                            <div class="txt-container">
+                                <div id="deadline">
+                                    Due <div class="deadlineTxt">in a few months</div>
+                                </div>
+                            </div>
+                        <div id="doneIcon"></div><div id="options"></div>
+                    </div>
+                    <div class="note" id="yellow">
+                        <div class="header-txt">Practice guitar</div>
+                            <div class="txt-container">
+                                <div id="deadline">
+                                    Due <div class="deadlineTxt">in a few months</div>
+                                </div>
+                            </div>
+                        <div id="doneIcon"></div><div id="options"></div>
+                    </div>
+                    <div class="note" id="yellow">
+                        <div class="header-txt">Quick workout</div>
+                            <div class="txt-container">
+                                <div id="deadline">
+                                    Due <div class="deadlineTxt">in a few months</div>
+                                </div>
+                            </div>
+                        <div id="doneIcon"></div><div id="options"></div>
+                    </div>
+                    <div class="new">+ New note</div>
+                </div>
+                <div class="container-of-notes" id="container-blue">
+                    <div class="note" id="blue">
+                        <div class="header-txt">Walk the dog</div>
+                            <div class="txt-container">
+                                <div id="deadline">
+                                    Due <div class="deadlineTxt">in a few months</div>
+                                </div>
+                            </div>
+                        <div id="doneIcon"></div><div id="options"></div>
+                    </div>
+                    <div class="new">+ New note</div>
+                </div>
+            </container>
+        </div>
+        <!-- <div class="popover">
+            <img src="close.svg" id="close">
+            <h1>Go to the bank</h1>
+            <h5>Due date</h5>
+            <div id="line">
+                <input type="radio" id="checkbox-one" class="specific" name="radio">
+                <label for="checkbox-one">Type a specific date... </label>
             </div>
-            <div class="container-of-notes">
-                <div class="new">+ New note</div>
+            <div id="line">
+                <input type="radio" id="checkbox-two" class="few-days" name="radio">
+                <label for="checkbox-two">In a few days</label>
             </div>
-            <div class="line"></div>
-            <div class="container-of-notes" id="container-red">
-                <div class="note" id="red">
-                    <div class="header-txt">check emails</div>
-                        <div class="txt-container">
-                            <div id="deadline">
-                                Due <div class="deadlineTxt">in a few months</div>
-                            </div>
-                        </div>
-                    <div id="doneIcon"></div><div id="options"></div>
-                </div>
-                <div class="note" id="red">
-                    <div class="header-txt">Go to the bank</div>
-                        <div class="txt-container">
-                            <div id="deadline">
-                                Due <div class="deadlineTxt">in a few months</div>
-                            </div>
-                        </div>
-                    <div id="doneIcon"></div><div id="options"></div>
-                </div>
-                <div class="new">+ New note</div>
+            <div id="line">
+                <input type="radio" id="checkbox-three" class="few-weeks" name="radio">
+                <label for="checkbox-three">In a few weeks</label>
             </div>
-            <div class="container-of-notes" id="container-yellow">
-                <div class="note" id="yellow">
-                    <div class="header-txt">Stroll by the lake</div>
-                        <div class="txt-container">
-                            <div id="deadline">
-                                Due <div class="deadlineTxt">in a few months</div>
-                            </div>
-                        </div>
-                    <div id="doneIcon"></div><div id="options"></div>
-                </div>
-                <div class="note" id="yellow">
-                    <div class="header-txt">Call a friend</div>
-                        <div class="txt-container">
-                            <div id="deadline">
-                                Due <div class="deadlineTxt">in a few months</div>
-                            </div>
-                        </div>
-                    <div id="doneIcon"></div><div id="options"></div>
-                </div>
-                <div class="note" id="yellow">
-                    <div class="header-txt">Practice guitar</div>
-                        <div class="txt-container">
-                            <div id="deadline">
-                                Due <div class="deadlineTxt">in a few months</div>
-                            </div>
-                        </div>
-                    <div id="doneIcon"></div><div id="options"></div>
-                </div>
-                <div class="note" id="yellow">
-                    <div class="header-txt">Quick workout</div>
-                        <div class="txt-container">
-                            <div id="deadline">
-                                Due <div class="deadlineTxt">in a few months</div>
-                            </div>
-                        </div>
-                    <div id="doneIcon"></div><div id="options"></div>
-                </div>
-                <div class="new">+ New note</div>
+            <div id="line">
+                <input type="radio" id="checkbox-four" class="few-months" name="radio">
+                <label for="checkbox-four">In a few months</label>
             </div>
-            <div class="container-of-notes" id="container-blue">
-                <div class="note" id="blue">
-                    <div class="header-txt">Walk the dog</div>
-                        <div class="txt-container">
-                            <div id="deadline">
-                                Due <div class="deadlineTxt">in a few months</div>
-                            </div>
-                        </div>
-                    <div id="doneIcon"></div><div id="options"></div>
-                </div>
-                <div class="new">+ New note</div>
-            </div>
-        </container>
+            <textarea id="add-description" placeholder="Type here to add a description..."></textarea>
+        </div> -->
     </div>
 </body>
 </html>

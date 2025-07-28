@@ -1,6 +1,9 @@
 html, body {
-    background-color: rgb(25, 25, 25);
-    color: #c6d0f5;
+    background-color: hsl(0, 0%, 10%);
+    --background-two: hsl(0, 0%, 13%);
+    --border: hsl(0, 0%, 25%);
+    --hover-card: hsl(0, 0%, 18%);
+    color: hsl(243, 51%, 91%);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     caret-color: #c6d0f5;
     font-family: Century Gothic Bold, Verdana, Geneva, Tahoma, sans-serif;
@@ -10,6 +13,17 @@ html, body {
 
 :root {
     --hover: none;
+}
+
+body {
+    margin: 0px;
+}
+.flex {
+    max-width: 100%;
+    display: flex;
+    margin: 0px;
+    flex: 1;    
+    justify-content: center;
 }
 
 @font-face {
@@ -29,7 +43,7 @@ html, body {
 }
 
 hr {
-    border: 1px solid rgb(38, 38, 38);
+    border: 1px solid var(--border);
     flex-grow: 0;
 }
 
@@ -80,8 +94,6 @@ container > div:nth-child(3) {
     width: 42px;
 }
 
-/* notes below */
-
 .container-of-notes div, #new {
     transition: 100ms ease-out;
 }
@@ -107,7 +119,7 @@ container > div:nth-child(3) {
 }
 
 .note:hover  {
-    background-color: rgb(47, 47, 47);
+    background-color: var(--hover-card);
 }
 
 
@@ -149,7 +161,7 @@ container > div:nth-child(3) {
 
 .line {
     grid-column-start: 3;
-    background-color: rgb(38, 38, 38);
+    background-color: var(--border);
     border: none;
 }
 
@@ -161,48 +173,54 @@ container > div:nth-child(3) {
 
 .new {
     background-color: transparent !important;
-    border: .12rem solid rgba(54, 54, 54, 0.479) !important;
+    border: .12rem solid var(--border) !important;
     padding-left: 18px !important;
     height: 25px !important;
-    color:hsl(228, 3%, 34%);
+    color: hsl(0, 0%, 36%);
 }
 
 .new:hover  {
-    background-color: rgb(47, 47, 47) !important;
+    background-color: var(--hover-card) !important;
 }
 
 .container-of-notes div {
     border-radius: 12px;
-    background-color:rgb(38, 38, 38);
-    min-height: 27px;
+    background-color:var(--background-two);
     align-content: center;
     padding: 8px 10px;
-    border: 1px rgb(54, 54, 54) solid;
+    border: 1px var(--border) solid;
     font-size: 1.05rem;
-    word-break: break-word;
     letter-spacing: normal;
 }
 
 .container-of-notes div input {
-    color: #c6d0f5;
     background-color: transparent;
     outline: none;
     border-style: none;
-    padding-bottom: 4px;
-    width: 93%;
+    width: 150px;
+    color: hsla(245, 52%, 91%, 0.616) !important;
+    font-family: Century Gothic Bold, Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 4px;
+}
+
+.container-of-notes div input:focus {
+    outline: none;
+    transition: 200ms ease-out;
+    box-shadow: 0 3px 0px 0px rgb(100, 103, 131);
+}
+
+.container-of-notes div input::placeholder {
+    color: hsla(245, 52%, 91%, 0.616);
 }
 
 .container-of-notes div div {
-    background-color: rgb(255, 255, 255);
     display: inline-flex;
     gap: 5px;
     padding: 0px;
     margin: 0px;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
     border: transparent;
     z-index: 1;
-    height: 10px !important;
-    margin-bottom: -10px;
 }
 
 .txt-container {
@@ -211,29 +229,27 @@ container > div:nth-child(3) {
 }
 
 #deadline, .deadlineTxt {
-    font-family: Century Gothic;
-    font-weight: 100;
+    font-family: sans-serif, Gothic Bold, Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 400 !important;
     letter-spacing: .7px !important;
     letter-spacing: normal;
-    font-size: .7rem !important; 
+    font-size: 12px !important; 
     display: inline !important;
     background-color: transparent !important;
+    color: hsl(0, 0%, 47%);
 }
 
 .deadlineTxt {
-    color: aquamarine;
-}
-
-.container-of-notes div input:focus {
-    outline: none;
-    transition: 200ms ease-out;
-    box-shadow: 0 3px 0 0 rgb(100, 103, 131);
+    color: rgb(127, 255, 212);
 }
 
 .to-do {
     height: 1000px;
-    width: 1100px;
-    padding: 50px 200px;
+    padding: 50px 100px;
+    flex-grow: 10;
+    flex-shrink: 0;
+    flex-basis: 0%;
+    max-width: 1150px;
 }
 
 #doneIcon, #options {
@@ -255,7 +271,7 @@ container > div:nth-child(3) {
 #options {
     background-image: url(./options.svg);
     rotate: 90deg;
-    bottom: 6px;
+    bottom: -5px;
     left: 45%;
 }
 
@@ -264,5 +280,107 @@ container > div:nth-child(3) {
     filter: opacity(1);
 }
 
+.header-txt {
+    word-break: break-all;
+}
 
+.popover {
+    font-family: sans-serif, Century Gothic, Verdana, Geneva, Tahoma, sans-serif;;
+    background-color: var(--background-two);
+    padding: 70px;
+    padding-right: 125px;
+    z-index: 2;
+    border-left: 1px solid var(--border);
+    flex: 1 1 0%;
+    /* width: 100%; */
+}
+
+input[type="radio"] {
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: hsl(0, 0%, 13%);
+    border: 2px hsl(0, 0%, 47%) solid;
+}
+
+input[type="radio"]:checked {
+    transition: 75ms ease-out;
+    background-color: hsl(0, 0%, 47%);
+    border: 3px solid hsl(0, 0%, 17%);
+}   
+
+label {
+    letter-spacing: normal;
+    display: flex;
+    font-weight: 400;
+    color: hsl(0, 0%, 47%);
+    font-size: 13px;
+    width: 70%;
+    height: 60px;
+    align-items: center;
+    padding-left: 5px;
+}
+
+#line {
+    padding: 0px 0px;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+}
+
+#line:hover {
+    background-color: hsl(0, 0%, 17%);
+
+}
+
+.popover > #line:nth-child(1n + 5) {
+    border-top: 1px solid var(--border);    
+}
+
+h5 {
+    color: hsl(0, 0%, 36%);
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+h1 {
+    font-family: Century Gothic Bold, Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+}
+
+#close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    height: 20px;
+    width: 20px;
+    filter:opacity(.3);
+    background-image: url(./close.svg);
+    border: none;
+}
+
+#close:hover {
+    filter:opacity(.7);
+}
+
+#add-description {
+    font-size: .9rem;
+    font-family: sans-serif;
+    margin-top: 27px;
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    color: hsl(0, 0%, 36%);
+    display: flex;
+    justify-content: start;
+    word-break: break-all;
+}
+
+#add-description:focus {
+    outline: none;
+}
 
