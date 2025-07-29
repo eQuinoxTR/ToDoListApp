@@ -239,9 +239,22 @@ container > div:nth-child(3) {
     color: hsl(0, 0%, 47%);
 }
 
-.deadlineTxt {
-    color: rgb(127, 255, 212);
+#txt-green {
+    color: #a6da95;
 }
+
+#txt-blue {
+    color: #a4b6f8;
+}
+
+#txt-red {
+    color: #ed8796;
+}
+
+#txt-none {
+    color: #f4dbd6;
+}
+
 
 .to-do {
     height: 1000px;

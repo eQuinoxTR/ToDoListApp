@@ -30,7 +30,7 @@ export function addPopOver(note, thePopoverIsActive) {
     if (thePopoverIsActive == true) {
         return;
     } else {
-        createPopover(note)
+        return createPopover(note)
     }
 } 
 
@@ -85,5 +85,8 @@ function createPopover(note) {
         line.appendChild(label);
         popover.appendChild(line);
     }
+
     popover.appendChild(textarea);
+    return popover;
 }
+

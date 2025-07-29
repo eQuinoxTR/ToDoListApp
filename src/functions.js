@@ -1,4 +1,4 @@
-import {root, getCardDom, addPopOver, deletePopover} from "./dom.js";
+import {root, getCardDom, addPopOver} from "./dom.js";
 let theNoteIsSaved = false, savedNote, popoverActive;
 
 export function detectTheNote(clickedItem, parent, classOfClickedItem) {
@@ -33,13 +33,15 @@ export function manageNoteClick(note, classOfNote, page) {
 }
 
 export function manageIconClick(icon) {
+    let note = icon.parentNode;
     if (icon.id == "doneIcon") {
-        deleteNote(icon.parentNode);
+        deleteNote(note);
     } else if (icon.id == "options") {
-        addPopOver(icon.parentNode, popoverActive);
+        let popover = addPopOver(note, popoverActive);
         popoverActive = true;
+        popover.addEventListener("change", (e) => radioLogic(note, e.target,))
     } else if (icon.id == "close") {
-        deleteNote(icon.parentNode);
+        deleteNote(note);
         popoverActive = false;
     }
 }
@@ -90,4 +92,20 @@ function addTxt(input) {
 
 function deleteNote(note) {
     note.remove();
+}
+
+function radioLogic(note, radio) {
+    if (radio.checked == true && radio.id == "checkbox-one") {
+        console.log("specific");
+    } else if (radio.checked == true) {
+        let dueDate = note.querySelector(".deadlineTxt");
+        let label = radio.nextElementSibling;
+        dueDate.textContent = label.textContent;
+        switch (dueDate.textContent) {
+            case "In a few days": dueDate.id = "txt-red"; break;
+            case "In a few weeks": dueDate.id = "txt-blue"; break;
+            case "In a few months": dueDate.id = "txt-green"; break;
+            default: dueDate.id = "txt-none"; break;
+        }
+    }
 }
