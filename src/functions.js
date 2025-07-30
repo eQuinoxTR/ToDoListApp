@@ -1,4 +1,4 @@
-import {root, getCardDom, addPopOver} from "./dom.js";
+import {root, getCardDom, createPopover, createInput} from "./dom.js";
 let theNoteIsSaved = false, savedNote, popoverActive;
 
 export function detectTheNote(clickedItem, parent, classOfClickedItem) {
@@ -33,15 +33,15 @@ export function manageNoteClick(note, classOfNote, page) {
 }
 
 export function manageIconClick(icon) {
-    let note = icon.parentNode;
+    let parent = icon.parentNode;
     if (icon.id == "doneIcon") {
-        deleteNote(note);
-    } else if (icon.id == "options") {
-        let popover = addPopOver(note, popoverActive);
+        deleteNote(parent);
+    } else if (icon.id == "options" && popoverActive != true) {
+        let popover = createPopover(parent, popoverActive);
         popoverActive = true;
-        popover.addEventListener("change", (e) => radioLogic(note, e.target,))
+        popover.addEventListener("change", (e) => radioLogic(parent, e.target))
     } else if (icon.id == "close") {
-        deleteNote(note);
+        deleteNote(parent);
         popoverActive = false;
     }
 }
@@ -81,31 +81,42 @@ function determineNoteColor(copy, page) {
     return coloredNote;
 }
 
-function addTxtIfFocusOutOrEnter(input) {
-    input.addEventListener("blur", () => addTxt(input));
-    input.addEventListener("keydown", (e) => {if(e.key == "Enter"){addTxt(input)}});
+function addTxtIfFocusOutOrEnter(input, dueDate) {
+    input.addEventListener("blur", () => addTxt(input, dueDate));
+    input.addEventListener("keydown", (e) => {if(e.key == "Enter"){addTxt(input, dueDate)}});
 }
 
-function addTxt(input) {
-    if (input.value != "") {input.parentNode.textContent = `${input.value}`;}
+function addTxt(input, dueDate) {
+    if (input.parentNode.htmlFor == "checkbox-one") {
+        dueDate.textContent = `in ${input.value}`; 
+        determineDueDateId("specific date", dueDate);
+    } else if (input.value != "") {
+        input.parentNode.textContent = `${input.value}`;
+    }
+}
+
+function radioLogic(parent, radio) {
+    let dueDate = parent.querySelector(".deadlineTxt");
+    let label = radio.nextElementSibling;
+
+    if (radio.checked == true && radio.id == "checkbox-one") {
+        let input = createInput(label, radio);
+        addTxtIfFocusOutOrEnter(input, dueDate);
+    } else if (radio.checked == true) {
+        dueDate.textContent = label.textContent; 
+        determineDueDateId(label.textContent, dueDate);
+    }    
+}
+
+function determineDueDateId(text, dueDate) {
+    switch (text) {
+        case "In a few days": dueDate.id = "txt-red"; break;
+        case "In a few weeks": dueDate.id = "txt-blue"; break;
+        case "In a few months": dueDate.id = "txt-green"; break;
+        case "specific date": dueDate.id = "txt-none"; break;
+    }
 }
 
 function deleteNote(note) {
     note.remove();
-}
-
-function radioLogic(note, radio) {
-    if (radio.checked == true && radio.id == "checkbox-one") {
-        console.log("specific");
-    } else if (radio.checked == true) {
-        let dueDate = note.querySelector(".deadlineTxt");
-        let label = radio.nextElementSibling;
-        dueDate.textContent = label.textContent;
-        switch (dueDate.textContent) {
-            case "In a few days": dueDate.id = "txt-red"; break;
-            case "In a few weeks": dueDate.id = "txt-blue"; break;
-            case "In a few months": dueDate.id = "txt-green"; break;
-            default: dueDate.id = "txt-none"; break;
-        }
-    }
 }

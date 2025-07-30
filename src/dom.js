@@ -26,15 +26,7 @@ export function getCardDom(page) {
     return {note, input, btn}
 } 
 
-export function addPopOver(note, thePopoverIsActive) {
-    if (thePopoverIsActive == true) {
-        return;
-    } else {
-        return createPopover(note)
-    }
-} 
-
-function createPopover(note) {
+export function createPopover(note) {
     const headerTxt = note.querySelector(".header-txt").textContent;
     const flex = document.querySelector(".flex");
 
@@ -90,3 +82,10 @@ function createPopover(note) {
     return popover;
 }
 
+export function createInput(label, radio) {
+    const input = document.createElement("input");
+    input.addEventListener("focus", (e) => {radio.checked = true;})
+    label.textContent = "";
+    label.appendChild(input);
+    return input;
+}
